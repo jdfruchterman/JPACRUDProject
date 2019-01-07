@@ -25,6 +25,14 @@ public class CarController {
 		mv.setViewName("WEB-INF/car/showCar.jsp");
 		return mv;
 	}
+	@RequestMapping(path="getCarByKeyword.do", method=RequestMethod.GET)
+	public ModelAndView getCarsByKeyword(@RequestParam("keyword") String key) {
+		List<Car> cars = dao.getCarsByKeyword(key);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("car", cars);
+		mv.setViewName("WEB-INF/car/listCarsByKeyword.jsp");
+		return mv;
+	}
 	@RequestMapping(path="listCars.do", method=RequestMethod.GET)
 	public ModelAndView listCars() {
 		List<Car> cars = dao.listAllCars();

@@ -1,17 +1,18 @@
 @charset "UTF-8";
 
-.background-image {
+/* .background-image {
 	position: sticky;
 	top: 0px;
 	left: 0px;
 	height: 100%;
 	z-index: -1;
 	background-size: cover;
+	background-attachment: fixed;
 	background-image:
 		url('http://1.bp.blogspot.com/-d0Qg7GbQIxw/VNdtoX1Fv6I/AAAAAAAAJyQ/1EebQb1Vkw8/s1600/20150207CP.jpg');
-}
+} */
 
-.parallax {
+/* .parallax {
 	background-image: url("http://1.bp.blogspot.com/-d0Qg7GbQIxw/VNdtoX1Fv6I/AAAAAAAAJyQ/1EebQb1Vkw8/s1600/20150207CP.jpg"");
   	background-repeat: no-repeat;
   	height: 100%;
@@ -20,12 +21,19 @@
   	background-attachment: scroll;
   	position: fixed;
 
-} 
+} */
 
 
 
-body, html {
+body {
+	background-image: url('http://1.bp.blogspot.com/-d0Qg7GbQIxw/VNdtoX1Fv6I/AAAAAAAAJyQ/1EebQb1Vkw8/s1600/20150207CP.jpg');
 	height: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: inherit;
+	margin-bottom: 200px;
+	background-attachment: fixed;
 }
 
 .header {

@@ -62,8 +62,9 @@ public class CarDAOImpl implements CarDAO {
 	@Transactional
 	public List<Car> getCarsByKeyword (String keyword) {
 		List<Car> carList = new ArrayList<>();
-		String query = "SELECT car From Car car WHERE car.model = :keyword OR car.make = :keyword OR car.trim = :keyword OR car.engine.name";
-		carList = em.createQuery(query, Car.class).setParameter(1, ("%" + keyword + "%")).getResultList();
+		String query = "SELECT car FROM Car car WHERE model LIKE :keyword OR make LIKE :keyword OR trim LIKE :keyword OR car.engine.name LIKE :keyword";
+		String key = "%" + keyword + "%";
+		carList = em.createQuery(query, Car.class).setParameter("keyword", key).getResultList();
 		return carList;
 	}
 	

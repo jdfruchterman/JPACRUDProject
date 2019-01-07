@@ -1,5 +1,7 @@
 package com.skilldistillery.bootmvc.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +25,17 @@ public class CarController {
 		mv.setViewName("WEB-INF/car/showCar.jsp");
 		return mv;
 	}
+	@RequestMapping(path="listCars.do", method=RequestMethod.GET)
+	public ModelAndView listCars() {
+		List<Car> cars = dao.listAllCars();
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("car", cars);
+		mv.setViewName("WEB-INF/car/listCars.jsp");
+		return mv;
+	}
+	
+	
+	
 	@RequestMapping(path="editCar.do", method=RequestMethod.GET)
 	public ModelAndView editCar(@RequestParam("id") int id) {
 		Car car = dao.find(id);
@@ -46,7 +59,7 @@ public class CarController {
 	
 	
 	@RequestMapping(path="editCar.do", method=RequestMethod.POST)
-	public ModelAndView edit(@RequestParam("id")int id, @RequestParam("model")String model, @RequestParam("make")String make, @RequestParam("year")int year, @RequestParam("trim")String trim, @RequestParam("doors")int doors,@RequestParam("engine") String engine, @RequestParam("weight")int weight, @RequestParam("horsepower")int horsepower, @RequestParam("torque")int torque, @RequestParam("0to60")String zerotosixty ) {
+	public ModelAndView edit(@RequestParam("id")int id, @RequestParam("model")String model, @RequestParam("make")String make, @RequestParam("year")int year, @RequestParam("trim")String trim, @RequestParam("doors")int doors,@RequestParam("engineLayout") String engineLayout, @RequestParam("weight")int weight, @RequestParam("horsepower")int horsepower, @RequestParam("torque")int torque, @RequestParam("0to60")String zerotosixty ) {
 		ModelAndView mv = new ModelAndView();
 		Car editedCar = new Car();
 //		newCar.setId(0); going to reuse id but don't need it as this is tempobject
@@ -55,7 +68,7 @@ public class CarController {
 		editedCar.setYear(year);
 		editedCar.setTrim(trim);
 		editedCar.setDoors(doors);
-		editedCar.setEngine(engine);
+		editedCar.setEngineLayout(engineLayout);
 		editedCar.setWeight(weight);
 		editedCar.setHorsepower(horsepower);
 		editedCar.setTorque(torque);
@@ -72,7 +85,7 @@ public class CarController {
 		return mv;
 	}
 	@RequestMapping(path="createCar.do", method=RequestMethod.POST)
-	public ModelAndView create(@RequestParam("model")String model, @RequestParam("make")String make, @RequestParam("year")int year, @RequestParam("trim")String trim, @RequestParam("doors")int doors,@RequestParam("engine") String engine, @RequestParam("weight")int weight, @RequestParam("horsepower")int horsepower, @RequestParam("torque")int torque, @RequestParam("0to60")String zerotosixty ) {
+	public ModelAndView create(@RequestParam("model")String model, @RequestParam("make")String make, @RequestParam("year")int year, @RequestParam("trim")String trim, @RequestParam("doors")int doors,@RequestParam("engineLayout") String engineLayout, @RequestParam("weight")int weight, @RequestParam("horsepower")int horsepower, @RequestParam("torque")int torque, @RequestParam("0to60")String zerotosixty ) {
 		ModelAndView mv = new ModelAndView();
 		Car newCar = new Car();
 		newCar.setId(0);
@@ -81,12 +94,16 @@ public class CarController {
 		newCar.setYear(year);
 		newCar.setTrim(trim);
 		newCar.setDoors(doors);
-		newCar.setEngine(engine);
+		newCar.setEngineLayout(engineLayout);
 		newCar.setWeight(weight);
 		newCar.setHorsepower(horsepower);
 		newCar.setTorque(torque);
 		double zeroToSixty = Double.parseDouble(zerotosixty);
 		newCar.setZerotosixty(zeroToSixty);
+		
+		// add engine later:
+		newCar.setEngine(null);
+		
 		newCar = dao.create(newCar);
 		if(newCar != null) {
 			mv.addObject("car", newCar);

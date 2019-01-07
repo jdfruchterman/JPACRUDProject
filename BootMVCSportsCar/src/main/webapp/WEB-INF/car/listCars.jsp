@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +19,7 @@
 <style type="text/css"></style>
 <link rel="stylesheet" type="text/css" href="index.css">
 <meta charset="UTF-8">
-<title>Jimmy's Sports Car Database - New Car Added</title>
+<title>Jimmy's Sports Car Database - Find a car in the database</title>
 </head>
 <body>
 	<div class="background-image">
@@ -32,25 +33,31 @@
 				</nav>
 			</div>
 		</div>
+		<c:forEach items="${car}" var="carVar">
 		<div class="container">
-			<h4>New Car Added:</h4>
-			<h4>${car.year} ${car.make} ${car.model}</h4>
-			<h5>Database Id: ${car.id }</h5>
+			<h4>${carVar.year} ${carVar.make} ${carVar.model}</h4>
+			<h5>Car Id: ${carVar.id }</h5>
 			<h5>Specifications:</h5>
 			<p>
 			<div>
 				<ul>
-					<li>Trim: ${car.trim}</li>
-					<li>Doors: ${car.doors }</li>
-					<li>Engine Layout: ${car.engineLayout }</li>
-					<li>Weight: ${car.weight }</li>
-					<li>Horsepower: ${car.horsepower }</li>
-					<li>Torque(ft/lbs): ${car.torque }</li>
-					<li>0 to 60: ${car.zerotosixty }</li>
+					<li>Trim: ${carVar.trim}</li>
+					<li>Doors: ${carVar.doors }</li>
+					<li>Engine Layout: ${carVar.engineLayout }</li>
+					<li>Weight: ${carVar.weight }</li>
+					<li>Horsepower: ${carVar.horsepower }</li>
+					<li>Torque(ft/lbs): ${carVar.torque }</li>
+					<li>0 to 60: ${carVar.zerotosixty }</li>
+					<li>Engine: ${carVar.engine.name }</li>
+					<li>Displacement: ${carVar.engine.displacement }</li>
+					<li>Cylinders: ${carVar.engine.cylinders }</li>
+					<li>Configuration: ${carVar.engine.configuration}</li>
+					 
 				</ul>
 			</div>
 		</div>
-	</div>
+		</c:forEach>
+ 	</div>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

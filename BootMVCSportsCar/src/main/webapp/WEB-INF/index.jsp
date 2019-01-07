@@ -39,6 +39,9 @@
 			<h4>
 				<a href="createCar.do" method="GET">Add a car to the database</a>
 			</h4>
+			<h4>
+				<a href="listCars.do" method="GET">List all cars in database</a>
+			</h4>
 
 			<h4>Find a car by ID</h4>
 			<form action="getCar.do" method="GET">

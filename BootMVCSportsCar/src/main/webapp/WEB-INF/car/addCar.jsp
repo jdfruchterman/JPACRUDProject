@@ -57,8 +57,8 @@
 						name="doors" value="2" required min="1" required max="10"></input>
 				</div>
 				<div class="form-group">
-					<label id="engine">Engine:</label> <input type="text" id="engine"
-						name="engine" value="2ZZ-GE"></input>
+					<label id="engine">Engine Layout:</label> <input type="text" id="engineLayout"
+						name="engineLayout" value="FF"></input>
 				</div>
 				<div class="form-group">
 					<label id="weight">Weight:</label> <input type="number" id="weight"

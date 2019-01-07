@@ -1,14 +1,33 @@
 @charset "UTF-8";
 
 .background-image {
-	position: relative;
-	height: 100vh;
-/* 	min-height: 100px;
-	max-height: 150px; */
+	position: sticky;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+	z-index: -1;
 	background-size: cover;
 	background-image:
 		url('http://1.bp.blogspot.com/-d0Qg7GbQIxw/VNdtoX1Fv6I/AAAAAAAAJyQ/1EebQb1Vkw8/s1600/20150207CP.jpg');
 }
+
+.parallax {
+	background-image: url("http://1.bp.blogspot.com/-d0Qg7GbQIxw/VNdtoX1Fv6I/AAAAAAAAJyQ/1EebQb1Vkw8/s1600/20150207CP.jpg"");
+  	background-repeat: no-repeat;
+  	height: 100%;
+  	background-size: cover;
+  	background-position: center;
+  	background-attachment: scroll;
+  	position: fixed;
+
+} 
+
+
+
+body, html {
+	height: 100%;
+}
+
 .header {
 	position: relative;
 	height: 100vh;

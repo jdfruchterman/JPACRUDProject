@@ -1,5 +1,8 @@
 package com.skilldistillery.bootmvc.data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -54,5 +57,33 @@ public class CarDAOImpl implements CarDAO {
 		em.remove(carToDelete);
 		return false;
 	}
+	
+	@Override
+	@Transactional
+	public List<Car> getCarsByKeyword (String keyword) {
+		List<Car> carList = new ArrayList<>();
+		String query = "SELECT car From Car car WHERE car.model = :keyword OR car.make = :keyword OR car.trim = :keyword OR car.engine.name";
+		carList = em.createQuery(query, Car.class).setParameter(1, ("%" + keyword + "%")).getResultList();
+		return carList;
+	}
+	
+	@Override
+	@Transactional
+	public List<Car> listAllCars () {
+		List<Car> carList = new ArrayList<>();
+		String query = "SELECT car FROM Car car";
+		carList = em.createQuery(query, Car.class).getResultList();
+		return carList;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

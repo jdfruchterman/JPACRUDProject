@@ -42,11 +42,16 @@
 				<ul>
 					<li>Trim: ${car.trim}</li>
 					<li>Doors: ${car.doors }</li>
-					<li>Engine: ${car.engine }</li>
+					<li>Engine Layout: ${car.engineLayout }</li>
 					<li>Weight: ${car.weight }</li>
 					<li>Horsepower: ${car.horsepower }</li>
 					<li>Torque(ft/lbs): ${car.torque }</li>
 					<li>0 to 60: ${car.zerotosixty }</li>
+					<li>Engine: ${car.engine.name }</li>
+					<li>Displacement: ${car.engine.displacement }</li>
+					<li>Cylinders: ${car.engine.cylinders }</li>
+					<li>Configuration: ${car.engine.configuration}</li>
+					 
 				</ul>
 			</div>
 		</div>

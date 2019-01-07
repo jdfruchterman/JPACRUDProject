@@ -38,6 +38,7 @@ public class CarDAOImpl implements CarDAO {
 		carToEdit.setHorsepower(car.getHorsepower());
 		carToEdit.setTorque(car.getTorque());
 		carToEdit.setZerotosixty(car.getZerotosixty());
+//		carToEdit.setEngineLayout(car.getEngineLayout());
 		return carToEdit;
 	}
 

@@ -18,53 +18,43 @@ import org.junit.jupiter.api.Test;
 import com.skilldistillery.jpasportscar.entities.Car;
 import com.skilldistillery.jpasportscar.entities.Engine;
 
-class CarTest {
+class EngineTest {
 	private static EntityManagerFactory emf;
-	private EntityManager em;
-	private Car car;
-	private List<Car> cars;
+	private static EntityManager em;
+	private Engine engine;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		emf = Persistence.createEntityManagerFactory("SportsCarDB");
+	emf = Persistence.createEntityManagerFactory("SportsCarDB");
 	}
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
-		emf.close();
-	}
+	emf.close();}
 
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		car = em.find(Car.class, 2);
+		engine = em.find(Engine.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
-		em.close();
-		car = null;
+	em.close();
+	engine = null;
 	}
 
 	@Test
-	void test_Car_Mappings() {
-		assertEquals("MR2", car.getModel() );
-		assertEquals("Toyota", car.getMake());
-		assertEquals(1986, car.getYear());
-		assertEquals("Base", car.getTrim());
-		assertEquals(2, car.getDoors());
-		assertEquals(2282, car.getWeight());
-		assertEquals(112, car.getHorsepower());
-		assertEquals(97, car.getTorque());
-		assertEquals(8.3, car.getZerotosixty());
-		assertEquals("MR", car.getEngineLayout());
+	void test_engine_to_car_mappings() {
+		Engine engine = em.find(Engine.class, 1);
+		List<Car> cars = engine.getCars();
+		assertNotNull(cars);
+		assert(cars.size() > 0);
 	}
+	
 	@Test
-	void test_engine_car_mappings() {
-		Car car = em.find(Car.class, 1);
-		String expected = "2ZZ-GE";
-		assertEquals(expected, car.getEngine().getName());
-		
+	void test_mapping_to_engine() {
+		assertEquals("2ZZ-GE", engine.getName());
 	}
 
 }

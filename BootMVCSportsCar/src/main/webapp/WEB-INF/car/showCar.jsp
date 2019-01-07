@@ -27,9 +27,10 @@
 			<div class="banner">Jimmy's Sports Car Database</div>
 			<div class="navigation">
 				<nav class="nav nav-tabs">
-					<a class="nav-item nav-link active" href="home.do">Home </a> <a
-						class="nav-item nav-link" href="createCar.do" method="GET">Add
-						Car to Database </a>
+					<a class="nav-item nav-link" href="home.do">Home </a> 
+					<a class="nav-item nav-link" href="createCar.do" method="GET">Add Car to Database </a>
+					<a class="nav-item nav-link" href="createEngine.do" method="GET">Add Engine to Database </a>
+					<a class="nav-item nav-link" href="listCars.do" method="GET">List All Cars </a>
 				</nav>
 			</div>
 		</div>
@@ -42,11 +43,16 @@
 				<ul>
 					<li>Trim: ${car.trim}</li>
 					<li>Doors: ${car.doors }</li>
-					<li>Engine: ${car.engine }</li>
+					<li>Engine Layout: ${car.engineLayout }</li>
 					<li>Weight: ${car.weight }</li>
 					<li>Horsepower: ${car.horsepower }</li>
 					<li>Torque(ft/lbs): ${car.torque }</li>
 					<li>0 to 60: ${car.zerotosixty }</li>
+					<li>Engine: ${car.engine.name }</li>
+					<li>Displacement: ${car.engine.displacement }</li>
+					<li>Cylinders: ${car.engine.cylinders }</li>
+					<li>Configuration: ${car.engine.configuration}</li>
+					 
 				</ul>
 			</div>
 		</div>

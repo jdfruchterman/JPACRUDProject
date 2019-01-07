@@ -19,7 +19,7 @@
 <style type="text/css"></style>
 <link rel="stylesheet" type="text/css" href="index.css">
 <meta charset="UTF-8">
-<title>Jimmy's Sports Car Database Home Page</title>
+<title>Jimmy's Sports Car Database - Add Car</title>
 </head>
 <body>
 	<div class="background-image">
@@ -27,9 +27,11 @@
 			<div class="banner">Jimmy's Sports Car Database</div>
 			<div class="navigation">
 				<nav class="nav nav-tabs">
-					<a class="nav-item nav-link" href="home.do">Home </a> <a
-						class="nav-item nav-link active" href="createCar.do" method="GET">Add
-						Car to Database </a>
+					<a class="nav-item nav-link" href="home.do">Home </a> 
+					<a class="nav-item nav-link active" href="createCar.do" method="GET">Add Car to Database </a>
+					<a class="nav-item nav-link" href="createEngine.do" method="GET">Add Engine to Database </a>
+					<a class="nav-item nav-link" href="listCars.do" method="GET">List All Cars </a>
+					<a class="nav-item nav-link" href="listEngines.do" method="GET">List All Engines </a>
 				</nav>
 			</div>
 		</div>
@@ -57,8 +59,8 @@
 						name="doors" value="2" required min="1" required max="10"></input>
 				</div>
 				<div class="form-group">
-					<label id="engine">Engine:</label> <input type="text" id="engine"
-						name="engine" value="2ZZ-GE"></input>
+					<label id="engine">Engine Layout:</label> <input type="text" id="engineLayout"
+						name="engineLayout" value="FF"></input>
 				</div>
 				<div class="form-group">
 					<label id="weight">Weight:</label> <input type="number" id="weight"

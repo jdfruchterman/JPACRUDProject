@@ -1,5 +1,8 @@
 package com.skilldistillery.bootmvc.data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -7,6 +10,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.jpasportscar.entities.Car;
+import com.skilldistillery.jpasportscar.entities.Engine;
 
 @Transactional
 @Service
@@ -38,6 +42,7 @@ public class CarDAOImpl implements CarDAO {
 		carToEdit.setHorsepower(car.getHorsepower());
 		carToEdit.setTorque(car.getTorque());
 		carToEdit.setZerotosixty(car.getZerotosixty());
+//		carToEdit.setEngineLayout(car.getEngineLayout());
 		return carToEdit;
 	}
 
@@ -53,5 +58,49 @@ public class CarDAOImpl implements CarDAO {
 		em.remove(carToDelete);
 		return false;
 	}
+	
+	@Override
+	@Transactional
+	public List<Car> getCarsByKeyword (String keyword) {
+		List<Car> carList = new ArrayList<>();
+		String query = "SELECT car FROM Car car WHERE model LIKE :keyword OR make LIKE :keyword OR trim LIKE :keyword OR car.engine.name LIKE :keyword";
+		String key = "%" + keyword + "%";
+		carList = em.createQuery(query, Car.class).setParameter("keyword", key).getResultList();
+		return carList;
+	}
+	
+	@Override
+	@Transactional
+	public List<Car> listAllCars () {
+		List<Car> carList = new ArrayList<>();
+		String query = "SELECT car FROM Car car";
+		carList = em.createQuery(query, Car.class).getResultList();
+		return carList;
+	}
+	@Override
+	@Transactional
+	public List<Engine> listAllEngines () {
+		List<Engine> engineList = new ArrayList<>();
+		String query = "SELECT engine FROM Engine engine";
+		engineList = em.createQuery(query, Engine.class).getResultList();
+		return engineList;
+	}
+
+	@Override
+	public Engine createEngine(Engine engine) {
+		em.persist(engine);
+		em.flush();
+		return engine;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

@@ -5,44 +5,64 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Car {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String model;
 	private String make;
 	private int year;
 	private String trim;
 	private int doors;
-	private String engine;
+	@Column(name = "engine")
+	private String engineLayout;
 	private int weight;
 	private int horsepower;
 	private int torque;
 	@Column(name = "0to60")
 	private double zerotosixty;
+	@ManyToOne
+	@JoinColumn(name = "engine_id")
+	private Engine engine;
 
 	public Car() {
 	}
 
-	public Car(String model, String make, int year, String trim, int doors, String engine, int weight, int horsepower,
-			int torque, double zerotosixty) {
-		super();
-		this.model = model;
-		this.make = make;
-		this.year = year;
-		this.trim = trim;
-		this.doors = doors;
-		this.engine = engine;
-		this.weight = weight;
-		this.horsepower = horsepower;
-		this.torque = torque;
-		this.zerotosixty = zerotosixty;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
 	}
 
-	public Car(int id, String model, String make, int year, String trim, int doors, String engine, int weight,
-			int horsepower, int torque, double zerotosixty) {
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Car other = (Car) obj;
+		if (id != other.id)
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Car [id=" + id + ", model=" + model + ", make=" + make + ", year=" + year + ", trim=" + trim
+				+ ", doors=" + doors + ", engineLayout=" + engineLayout + ", weight=" + weight + ", horsepower="
+				+ horsepower + ", torque=" + torque + ", zerotosixty=" + zerotosixty + "]";
+	}
+
+	public Car(int id, String model, String make, int year, String trim, int doors, String engineLayout, int weight,
+			int horsepower, int torque, double zerotosixty, Engine engine) {
 		super();
 		this.id = id;
 		this.model = model;
@@ -50,18 +70,28 @@ public class Car {
 		this.year = year;
 		this.trim = trim;
 		this.doors = doors;
-		this.engine = engine;
+		this.engineLayout = engineLayout;
 		this.weight = weight;
 		this.horsepower = horsepower;
 		this.torque = torque;
 		this.zerotosixty = zerotosixty;
+		this.engine = engine;
 	}
 
-	@Override
-	public String toString() {
-		return "Car [id=" + id + ", model=" + model + ", make=" + make + ", year=" + year + ", trim=" + trim
-				+ ", doors=" + doors + ", engine=" + engine + ", weight=" + weight + ", horsepower=" + horsepower
-				+ ", torque=" + torque + ", zerotosixty=" + zerotosixty + "]";
+	public String getEngineLayout() {
+		return engineLayout;
+	}
+
+	public void setEngineLayout(String engineLayout) {
+		this.engineLayout = engineLayout;
+	}
+
+	public Engine getEngine() {
+		return engine;
+	}
+
+	public void setEngine(Engine engine) {
+		this.engine = engine;
 	}
 
 	public int getId() {
@@ -110,14 +140,6 @@ public class Car {
 
 	public void setDoors(int doors) {
 		this.doors = doors;
-	}
-
-	public String getEngine() {
-		return engine;
-	}
-
-	public void setEngine(String engine) {
-		this.engine = engine;
 	}
 
 	public int getWeight() {

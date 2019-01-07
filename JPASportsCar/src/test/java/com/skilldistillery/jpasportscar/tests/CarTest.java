@@ -1,7 +1,9 @@
 package com.skilldistillery.jpasportscar.tests;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,11 +16,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.skilldistillery.jpasportscar.entities.Car;
+import com.skilldistillery.jpasportscar.entities.Engine;
 
 class CarTest {
 	private static EntityManagerFactory emf;
 	private EntityManager em;
 	private Car car;
+	private List<Car> cars;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -33,7 +37,7 @@ class CarTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		car = em.find(Car.class, 5);
+		car = em.find(Car.class, 2);
 	}
 
 	@AfterEach
@@ -47,16 +51,20 @@ class CarTest {
 		assertEquals("MR2", car.getModel() );
 		assertEquals("Toyota", car.getMake());
 		assertEquals(1986, car.getYear());
-		assertEquals("GT", car.getTrim());
+		assertEquals("Base", car.getTrim());
 		assertEquals(2, car.getDoors());
-		assertEquals("4AGE", car.getEngine());
-		assertEquals(2200, car.getWeight());
-		assertEquals(114, car.getHorsepower());
-		assertEquals(89, car.getTorque());
-		assertEquals(8.9, car.getZerotosixty());
-		
+		assertEquals(2282, car.getWeight());
+		assertEquals(112, car.getHorsepower());
+		assertEquals(97, car.getTorque());
+		assertEquals(8.3, car.getZerotosixty());
+		assertEquals("MR", car.getEngineLayout());
+	}
+	@Test
+	void test_engine_car_mappings() {
+		Car car = em.find(Car.class, 1);
+		String expected = "2ZZ-GE";
+		assertEquals(expected, car.getEngine().getName());
 		
 	}
-	
 
 }

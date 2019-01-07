@@ -27,9 +27,11 @@
 			<div class="banner">Jimmy's Sports Car Database</div>
 			<div class="navigation">
 				<nav class="nav nav-tabs">
-					<a class="nav-item nav-link active" href="home.do">Home </a> <a
-						class="nav-item nav-link" href="createCar.do" method="GET">Add
-						Car to Database </a>
+					<a class="nav-item nav-link active" href="home.do">Home </a> 
+					<a class="nav-item nav-link" href="createCar.do" method="GET">Add Car to Database </a>
+					<a class="nav-item nav-link" href="createEngine.do" method="GET">Add Engine to Database </a>
+					<a class="nav-item nav-link" href="listCars.do" method="GET">List All Cars </a>
+					<a class="nav-item nav-link" href="listEngines.do" method="GET">List All Engines </a>
 				</nav>
 			</div>
 		</div>
@@ -39,12 +41,28 @@
 			<h4>
 				<a href="createCar.do" method="GET">Add a car to the database</a>
 			</h4>
+			<h4>
+				<a href="createEngine.do" method="GET">Add an engine to the database</a>
+			</h4>
+			<h4>
+				<a href="listCars.do" method="GET">List all cars in database</a>
+			</h4>
+			<h4>
+				<a href="listEngines.do" method="GET">List all engines in database</a>
+			</h4>
 
 			<h4>Find a car by ID</h4>
 			<form action="getCar.do" method="GET">
 				Car ID: <input type="text" name="id" /> <input type="submit"
 					value="Find Car" class="btn btn-primary" />
 			</form>
+			<h4>Find a car by keyword</h4>
+			<form action="getCarByKeyword.do" method="GET">
+				Car ID: <input type="text" name="keyword" /> <input type="submit"
+					value="Find Car" class="btn btn-primary" />
+			</form>
+			
+			
 
 			<h4>Edit a car in the database</h4>
 			<form action="editCar.do" method="GET">

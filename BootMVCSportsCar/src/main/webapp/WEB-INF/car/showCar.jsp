@@ -29,6 +29,7 @@
 				<nav class="nav nav-tabs">
 					<a class="nav-item nav-link" href="home.do">Home </a> 
 					<a class="nav-item nav-link" href="createCar.do" method="GET">Add Car to Database </a>
+					<a class="nav-item nav-link" href="createEngine.do" method="GET">Add Engine to Database </a>
 					<a class="nav-item nav-link" href="listCars.do" method="GET">List All Cars </a>
 				</nav>
 			</div>

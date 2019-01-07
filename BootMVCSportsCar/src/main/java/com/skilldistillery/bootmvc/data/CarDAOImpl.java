@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.jpasportscar.entities.Car;
+import com.skilldistillery.jpasportscar.entities.Engine;
 
 @Transactional
 @Service
@@ -75,6 +76,21 @@ public class CarDAOImpl implements CarDAO {
 		String query = "SELECT car FROM Car car";
 		carList = em.createQuery(query, Car.class).getResultList();
 		return carList;
+	}
+	@Override
+	@Transactional
+	public List<Engine> listAllEngines () {
+		List<Engine> engineList = new ArrayList<>();
+		String query = "SELECT engine FROM Engine engine";
+		engineList = em.createQuery(query, Engine.class).getResultList();
+		return engineList;
+	}
+
+	@Override
+	public Engine createEngine(Engine engine) {
+		em.persist(engine);
+		em.flush();
+		return engine;
 	}
 	
 	

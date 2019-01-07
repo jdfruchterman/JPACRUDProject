@@ -29,7 +29,9 @@
 				<nav class="nav nav-tabs">
 					<a class="nav-item nav-link active" href="home.do">Home </a> 
 					<a class="nav-item nav-link" href="createCar.do" method="GET">Add Car to Database </a>
+					<a class="nav-item nav-link" href="createEngine.do" method="GET">Add Engine to Database </a>
 					<a class="nav-item nav-link" href="listCars.do" method="GET">List All Cars </a>
+					<a class="nav-item nav-link" href="listEngines.do" method="GET">List All Engines </a>
 				</nav>
 			</div>
 		</div>
@@ -40,7 +42,13 @@
 				<a href="createCar.do" method="GET">Add a car to the database</a>
 			</h4>
 			<h4>
+				<a href="createEngine.do" method="GET">Add an engine to the database</a>
+			</h4>
+			<h4>
 				<a href="listCars.do" method="GET">List all cars in database</a>
+			</h4>
+			<h4>
+				<a href="listEngines.do" method="GET">List all engines in database</a>
 			</h4>
 
 			<h4>Find a car by ID</h4>

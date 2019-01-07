@@ -19,7 +19,7 @@
 <style type="text/css"></style>
 <link rel="stylesheet" type="text/css" href="index.css">
 <meta charset="UTF-8">
-<title>Jimmy's Sports Car Database Home Page</title>
+<title>Jimmy's Sports Car Database - Add Car</title>
 </head>
 <body>
 	<div class="background-image">
@@ -29,7 +29,9 @@
 				<nav class="nav nav-tabs">
 					<a class="nav-item nav-link" href="home.do">Home </a> 
 					<a class="nav-item nav-link active" href="createCar.do" method="GET">Add Car to Database </a>
+					<a class="nav-item nav-link" href="createEngine.do" method="GET">Add Engine to Database </a>
 					<a class="nav-item nav-link" href="listCars.do" method="GET">List All Cars </a>
+					<a class="nav-item nav-link" href="listEngines.do" method="GET">List All Engines </a>
 				</nav>
 			</div>
 		</div>

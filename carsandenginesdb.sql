@@ -22,7 +22,7 @@ DROP TABLE IF EXISTS `engine` ;
 
 CREATE TABLE IF NOT EXISTS `engine` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `cylinders` INT NULL,
+  `cylinders` INT NOT NULL,
   `displacement` VARCHAR(45) NULL,
   `configuration` VARCHAR(45) NULL,
   `name` VARCHAR(45) NULL,
@@ -86,7 +86,6 @@ INSERT INTO `engine` (`id`, `cylinders`, `displacement`, `configuration`, `name`
 INSERT INTO `engine` (`id`, `cylinders`, `displacement`, `configuration`, `name`) VALUES (5, 4, '2.2', 'Inline', '22R-E');
 INSERT INTO `engine` (`id`, `cylinders`, `displacement`, `configuration`, `name`) VALUES (6, 6, '3.0', 'Inline', '2JZ-GTE');
 INSERT INTO `engine` (`id`, `cylinders`, `displacement`, `configuration`, `name`) VALUES (7, 4, '2.0', 'Flat', '4U-GSE');
-INSERT INTO `engine` (`id`, `cylinders`, `displacement`, `configuration`, `name`) VALUES (DEFAULT, NULL, NULL, NULL, NULL);
 
 COMMIT;
 

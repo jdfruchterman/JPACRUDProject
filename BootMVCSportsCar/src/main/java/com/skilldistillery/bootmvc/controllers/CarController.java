@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.bootmvc.data.CarDAO;
 import com.skilldistillery.jpasportscar.entities.Car;
+import com.skilldistillery.jpasportscar.entities.Engine;
 
 @Controller
 public class CarController {
@@ -39,6 +40,14 @@ public class CarController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("car", cars);
 		mv.setViewName("WEB-INF/car/listCars.jsp");
+		return mv;
+	}
+	@RequestMapping(path="listEngines.do", method=RequestMethod.GET)
+	public ModelAndView listEngines() {
+		List<Engine> engines = dao.listAllEngines();
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("engine", engines);
+		mv.setViewName("WEB-INF/car/listEngines.jsp");
 		return mv;
 	}
 	
@@ -92,6 +101,28 @@ public class CarController {
 		}
 		return mv;
 	}
+	
+	@RequestMapping(path="createEngine.do", method=RequestMethod.POST)
+	public ModelAndView createEngine(@RequestParam("name")String name, @RequestParam("displacement")String displacement, @RequestParam("cylinders")int cylinders, @RequestParam("configuration")String configuration) {
+		ModelAndView mv = new ModelAndView();
+		Engine newEngine = new Engine();
+		newEngine.setId(0);
+		newEngine.setName(name);
+		newEngine.setCylinders(cylinders);
+		newEngine.setDisplacement(displacement);
+		newEngine.setConfiguration(configuration);
+//		newEngine.setCars(null);
+		
+		newEngine = dao.createEngine(newEngine);
+		if(newEngine != null) {
+			mv.addObject("engine", newEngine);
+			mv.setViewName("WEB-INF/car/newEngine.jsp");
+		}
+		else {
+			mv.addObject("error", "Could not create engine, try again");
+		}
+		return mv;
+	}
 	@RequestMapping(path="createCar.do", method=RequestMethod.POST)
 	public ModelAndView create(@RequestParam("model")String model, @RequestParam("make")String make, @RequestParam("year")int year, @RequestParam("trim")String trim, @RequestParam("doors")int doors,@RequestParam("engineLayout") String engineLayout, @RequestParam("weight")int weight, @RequestParam("horsepower")int horsepower, @RequestParam("torque")int torque, @RequestParam("0to60")String zerotosixty ) {
 		ModelAndView mv = new ModelAndView();
@@ -125,6 +156,10 @@ public class CarController {
 	@RequestMapping(path="createCar.do", method=RequestMethod.GET)
 	public String addCar() {
 		return "WEB-INF/car/addCar.jsp";
+	}
+	@RequestMapping(path="createEngine.do", method=RequestMethod.GET)
+	public String addEngine() {
+		return "WEB-INF/car/addEngine.jsp";
 	}
 	
 	@RequestMapping(path= {"home.do", "/"})
